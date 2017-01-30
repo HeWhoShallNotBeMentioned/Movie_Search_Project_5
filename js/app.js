@@ -3,6 +3,7 @@ $(document).ready(function(){
   document.getElementById("search").focus();
 
   $('.search-button').click(function(){
+    event.preventDefault();
     console.log("inside the click handler");
     var titleSearch = $('#search').val();
     console.log("titleSearch:   ", titleSearch);
@@ -10,11 +11,12 @@ $(document).ready(function(){
       s: titleSearch,
       r: "json"
     };
-    var apiURL = "http://www.omdbapi.com/?";
+    var apiURL = "http://www.omdbapi.com/";
 
     $.getJSON(apiURL, movieOptions, function(response) {
       console.log(response);
       var statusHTML = "";
+      
       $.each(response.Search, function(index, movie){
         statusHTML += "<li>";
         // console.log(movie.Poster);
