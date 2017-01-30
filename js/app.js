@@ -16,7 +16,13 @@ $(document).ready(function(){
     $.getJSON(apiURL, movieOptions, function(response) {
       console.log(response);
       var statusHTML = "";
-      
+      if (response.Response === "False") {
+            statusHTML += "<li class='no-movies'>";
+            statusHTML += "<i class='material-icons icon-help'>help_outline</i>";
+            statusHTML += "No movies found that match: " + titleSearch;
+            statusHTML += "</li>";
+        }
+
       $.each(response.Search, function(index, movie){
         statusHTML += "<li>";
         // console.log(movie.Poster);
@@ -42,6 +48,6 @@ $(document).ready(function(){
 
       });
     $('#movies').html(statusHTML);
-  });
+    });
   });
 });
