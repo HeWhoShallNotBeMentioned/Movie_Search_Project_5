@@ -1,5 +1,18 @@
 $(document).ready(function(){
-    $.getJSON('http://www.omdbapi.com/?', {"s": "star wars", "y": "", "r": "json"}, function(response) {
+
+  document.getElementById("search").focus();
+
+  $('.search-button').click(function(){
+    console.log("inside the click handler");
+    var titleSearch = $('#search').val();
+    console.log("titleSearch:   ", titleSearch);
+    var movieOptions = {
+      s: titleSearch,
+      r: "json"
+    };
+    var apiURL = "http://www.omdbapi.com/?";
+
+    $.getJSON(apiURL, movieOptions, function(response) {
       console.log(response);
       var statusHTML = "";
       $.each(response.Search, function(index, movie){
@@ -17,7 +30,6 @@ $(document).ready(function(){
           statusHTML += '<i class="material-icons poster-placeholder">crop_original</i>';
           statusHTML += '</div>';
         }
-        //statusHTML += "will this show?";
         statusHTML += '<span class="movie-title">';
         statusHTML += movie.Title;
         statusHTML += '</span>';
@@ -28,5 +40,6 @@ $(document).ready(function(){
 
       });
     $('#movies').html(statusHTML);
+  });
   });
 });
