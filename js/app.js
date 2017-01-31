@@ -31,11 +31,15 @@ $(document).ready(function(){
         // console.log(movie.Poster);
         // console.log(movie.Title);
         if(movie.Poster !== "N/A"){
+          statusHTML += '<a href="http://www.imdb.com/title/';
+          statusHTML += movie.imdbID;
+          statusHTML += '" target="_blank>';
           statusHTML += '<div class="poster-wrap">';
           statusHTML += '<img class="movie-poster" src="' ;
           statusHTML += movie.Poster;
-          statusHTML +=  '">';
+          statusHTML +=  '>';
           statusHTML += '</div>';
+          statusHTML += '</a>';
         } else {
           statusHTML += '<div class="poster-wrap">';
           statusHTML += '<i class="material-icons poster-placeholder">crop_original</i>';
