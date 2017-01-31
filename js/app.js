@@ -6,9 +6,12 @@ $(document).ready(function(){
     event.preventDefault();
     console.log("inside the click handler");
     var titleSearch = $('#search').val();
+    var yearSearch = $('#year').val();
     console.log("titleSearch:   ", titleSearch);
+    console.log("yearSearch:   ", yearSearch);
     var movieOptions = {
       s: titleSearch,
+      y: yearSearch,
       r: "json"
     };
     var apiURL = "http://www.omdbapi.com/";
