@@ -37,7 +37,7 @@ $(document).ready(function(){
           statusHTML += '<div class="poster-wrap">';
           statusHTML += '<img class="movie-poster" src="' ;
           statusHTML += movie.Poster;
-          statusHTML +=  '>';
+          statusHTML +=  '">';
           statusHTML += '</div>';
           statusHTML += '</a>';
         } else {
@@ -52,7 +52,6 @@ $(document).ready(function(){
         statusHTML += movie.Year;
         statusHTML += '</span>';
         statusHTML += "</li>";
-
       });
     $('#movies').html(statusHTML);
     });
