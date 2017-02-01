@@ -31,10 +31,14 @@ $(document).ready(function(){
         // console.log(movie.Poster);
         // console.log(movie.Title);
         if(movie.Poster !== "N/A"){
-          statusHTML += '<a href="http://www.imdb.com/title/';
-          statusHTML += movie.imdbID;
-          statusHTML += '" target="_blank>';
-          statusHTML += '<div class="poster-wrap">';
+          statusHTML += '<div id="ex1" style="display:none">';
+          statusHTML +=  '<p>Thanks for clicking.  That felt good.  <a href="#" rel="modal:close">Close</a> or press ESC</p>';
+          statusHTML += '</div>';
+          // statusHTML += '<a href="http://www.imdb.com/title/';
+          // statusHTML += movie.imdbID;
+          // statusHTML += '" target="_blank>';
+          statusHTML += '<a href="#ex1" rel="modal:open">';
+          statusHTML += '<div class="poster-wrap" id="ex1" rel="modal:open">';
           statusHTML += '<img class="movie-poster" src="' ;
           statusHTML += movie.Poster;
           statusHTML +=  '">';
