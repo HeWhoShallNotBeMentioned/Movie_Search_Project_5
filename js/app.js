@@ -17,7 +17,7 @@ $(document).ready(function(){
     var apiURL = "http://www.omdbapi.com/";
 
     $.getJSON(apiURL, movieOptions, function(response) {
-      console.log(response);
+      console.log("response1", response);
       var statusHTML = "";
       if (response.Response === "False") {
             statusHTML += "<li class='no-movies'>";
@@ -27,36 +27,46 @@ $(document).ready(function(){
         }
 
       $.each(response.Search, function(index, movie){
-        statusHTML += "<li>";
-        // console.log(movie.Poster);
-        // console.log(movie.Title);
+        //var eachObject = {};
+        // $.getJSON(apiURL, {i:  movie.imdbID}, function(response2){
+        //   console.log("response2", response2);
+        //   console.log(response2.Poster);
+        //});
+
         if(movie.Poster !== "N/A"){
-          statusHTML += '<div id="ex1" style="display:none">';
-          statusHTML +=  '<p>Thanks for clicking.  That felt good.  <a href="#" rel="modal:close">Close</a> or press ESC</p>';
-          statusHTML += '</div>';
-          // statusHTML += '<a href="http://www.imdb.com/title/';
-          // statusHTML += movie.imdbID;
-          // statusHTML += '" target="_blank>';
-          statusHTML += '<a href="#ex1" rel="modal:open">';
-          statusHTML += '<div class="poster-wrap" id="ex1" rel="modal:open">';
-          statusHTML += '<img class="movie-poster" src="' ;
-          statusHTML += movie.Poster;
-          statusHTML +=  '">';
-          statusHTML += '</div>';
-          statusHTML += '</a>';
-        } else {
+            statusHTML += "<li>";
+            statusHTML += '<div id="ex1" style="display:none">';
+            statusHTML +=  '<p>Thanks for clicking.  That felt good.  <a href="#" rel="modal:close">Close</a> or press ESC</p>';
+            statusHTML += '</div>';
+            // statusHTML += '<a href="http://www.imdb.com/title/';
+            // statusHTML += movie.imdbID;
+            // statusHTML += '" target="_blank>';
+            statusHTML += '<a href="#ex1" rel="modal:open">';
+            statusHTML += '<div class="poster-wrap" id="ex1" rel="modal:open">';
+            statusHTML += '<img class="movie-poster" src="' ;
+            statusHTML += movie.Poster;
+            statusHTML +=  '">';
+            statusHTML += '</div>';
+            statusHTML += '</a>';
+            }
+
+         if (movie.Poster === "N/A")
+         {
           statusHTML += '<div class="poster-wrap">';
           statusHTML += '<i class="material-icons poster-placeholder">crop_original</i>';
           statusHTML += '</div>';
         }
-        statusHTML += '<span class="movie-title">';
-        statusHTML += movie.Title;
-        statusHTML += '</span>';
-        statusHTML += '<span class="movie-year">';
-        statusHTML += movie.Year;
-        statusHTML += '</span>';
-        statusHTML += "</li>";
+
+
+      statusHTML += '<span class="movie-title">';
+      statusHTML += movie.Title;
+      statusHTML += '</span>';
+      statusHTML += '<span class="movie-year">';
+      statusHTML += movie.Year;
+      statusHTML += '</span>';
+      statusHTML += "</li>";
       });
+
     $('#movies').html(statusHTML);
     });
   });
