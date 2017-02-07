@@ -27,11 +27,6 @@ $(document).ready(function(){
         }
 
       $.each(response.Search, function(index, movie){
-        //var eachObject = {};
-        // $.getJSON(apiURL, {i:  movie.imdbID}, function(response2){
-        //   console.log("response2", response2);
-        //   console.log(response2.Poster);
-        //});
 
         if(movie.Poster !== "N/A"){
             statusHTML += "<li>";
@@ -41,13 +36,13 @@ $(document).ready(function(){
             // statusHTML += '<a href="http://www.imdb.com/title/';
             // statusHTML += movie.imdbID;
             // statusHTML += '" target="_blank>';
-            statusHTML += '<a href="#ex1" rel="modal:open">';
+            // statusHTML += '<a href="#ex1" rel="modal:open">';
             statusHTML += '<div class="poster-wrap" id="ex1" rel="modal:open">';
             statusHTML += '<img class="movie-poster" src="' ;
             statusHTML += movie.Poster;
             statusHTML +=  '">';
             statusHTML += '</div>';
-            statusHTML += '</a>';
+            // statusHTML += '</a>';
             }
 
          if (movie.Poster === "N/A")
@@ -65,6 +60,28 @@ $(document).ready(function(){
       statusHTML += movie.Year;
       statusHTML += '</span>';
       statusHTML += "</li>";
+
+      var movieID = movie.imdbID;
+      console.log("movieID   ",movieID);
+
+      var posterClick = document.getElementsByTagName("li")[0];
+
+      console.log("posterClick   ", posterClick);
+      console.log("typeof posterClick   ", typeof posterClick);
+
+      posterClick.addEventListener("click", function(){
+        console.log("inside click handler");
+        alert("Hello World!"); });
+
+
+
+
+      //var eachObject = {};
+      // $.getJSON(apiURL, {i:  movie.imdbID}, function(response2){
+      //   console.log("response2", response2);
+      //   console.log(response2.Poster);
+      //});
+
       });
 
     $('#movies').html(statusHTML);
