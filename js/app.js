@@ -50,7 +50,9 @@ $(document).ready(function(){
         }
 
 
-      statusHTML += '<span class="movie-title">';
+      statusHTML += '<span class="movie-title" id="';
+      statusHTML += movie.imdbID;
+      statusHTML += '">';
       statusHTML += movie.Title;
       statusHTML += '</span>';
       statusHTML += '<span class="movie-year">';
@@ -70,14 +72,16 @@ $(document).ready(function(){
       //   console.log("inside click handler");
       //   alert("Hello World!"); });
 
-      document.querySelector('body').addEventListener('click', function(event) {
-
-        if (event.target.tagName.toLowerCase() === 'li') {
+      document.addEventListener('click', function(event) {
+        console.log(event);
+        if (event.target.tagName === 'SPAN' || event.target.tagName === 'IMG') {
           //event.preventDefault();
           //$('this.li');
           // do your action on your 'li' or whatever it is you're listening for
-          alert("Hello World!");
+          // alert("Hello World!");
           console.log("inside click handler2");
+          var targetID = this.id;
+          console.log(targetID);
 
         }
 
