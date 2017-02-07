@@ -4,7 +4,7 @@ $(document).ready(function(){
 
   $('.search-button').click(function(){
     event.preventDefault();
-    console.log("inside the click handler");
+    console.log("inside the click handler1");
     var titleSearch = $('#search').val();
     var yearSearch = $('#year').val();
     console.log("titleSearch:   ", titleSearch);
@@ -27,22 +27,19 @@ $(document).ready(function(){
         }
 
       $.each(response.Search, function(index, movie){
-
+        console.log("index    ", index);
         if(movie.Poster !== "N/A"){
             statusHTML += "<li>";
-            statusHTML += '<div id="ex1" style="display:none">';
-            statusHTML +=  '<p>Thanks for clicking.  That felt good.  <a href="#" rel="modal:close">Close</a> or press ESC</p>';
-            statusHTML += '</div>';
             // statusHTML += '<a href="http://www.imdb.com/title/';
             // statusHTML += movie.imdbID;
             // statusHTML += '" target="_blank>';
-            // statusHTML += '<a href="#ex1" rel="modal:open">';
-            statusHTML += '<div class="poster-wrap" id="ex1" rel="modal:open">';
+
+            statusHTML += '<div class="poster-wrap" >';
             statusHTML += '<img class="movie-poster" src="' ;
             statusHTML += movie.Poster;
             statusHTML +=  '">';
             statusHTML += '</div>';
-            // statusHTML += '</a>';
+
             }
 
          if (movie.Poster === "N/A")
@@ -64,16 +61,27 @@ $(document).ready(function(){
       var movieID = movie.imdbID;
       console.log("movieID   ",movieID);
 
-      var posterClick = document.getElementsByTagName("li")[0];
+      // var posterClick = document.getElementsByTagName("li")[0];
+      //
+      // console.log("posterClick   ", posterClick);
+      // console.log("typeof posterClick   ", typeof posterClick);
+      //
+      // posterClick.addEventListener("click", function(){
+      //   console.log("inside click handler");
+      //   alert("Hello World!"); });
 
-      console.log("posterClick   ", posterClick);
-      console.log("typeof posterClick   ", typeof posterClick);
+      document.querySelector('body').addEventListener('click', function(event) {
 
-      posterClick.addEventListener("click", function(){
-        console.log("inside click handler");
-        alert("Hello World!"); });
+        if (event.target.tagName.toLowerCase() === 'li') {
+          //event.preventDefault();
+          //$('this.li');
+          // do your action on your 'li' or whatever it is you're listening for
+          alert("Hello World!");
+          console.log("inside click handler2");
 
+        }
 
+        });
 
 
       //var eachObject = {};
@@ -83,6 +91,8 @@ $(document).ready(function(){
       //});
 
       });
+
+
 
     $('#movies').html(statusHTML);
     });
