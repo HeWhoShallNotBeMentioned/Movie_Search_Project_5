@@ -55,7 +55,9 @@ $(document).ready(function(){
       statusHTML += '">';
       statusHTML += movie.Title;
       statusHTML += '</span>';
-      statusHTML += '<span class="movie-year">';
+      statusHTML += '<span class="movie-year" id="';
+      statusHTML += movie.imdbID;
+      statusHTML += '">';
       statusHTML += movie.Year;
       statusHTML += '</span>';
       statusHTML += "</li>";
@@ -75,24 +77,29 @@ $(document).ready(function(){
       document.addEventListener('click', function(event) {
         console.log(event);
         if (event.target.tagName === 'SPAN' || event.target.tagName === 'IMG') {
-          //event.preventDefault();
-          //$('this.li');
+          //need to put in || for non-poster sites
+          event.preventDefault();
+          // var targetLI = $('this.li');
+          // console.log("targetLI   ", targetLI);
+          // targetLI.attr('id', movie.imdbID);
+          // console.log("imdbID   ",movie.imdbID);
           // do your action on your 'li' or whatever it is you're listening for
           // alert("Hello World!");
           console.log("inside click handler2");
-          var targetID = this.id;
-          console.log(targetID);
+          document.getElementById("overlay").style.display = "block";
+
 
         }
 
+          $.getJSON(apiURL, {i:  movie.imdbID}, function(response2){
+            console.log("response2", response2);
+            console.log(response2.Poster);
+          });
         });
 
 
       //var eachObject = {};
-      // $.getJSON(apiURL, {i:  movie.imdbID}, function(response2){
-      //   console.log("response2", response2);
-      //   console.log(response2.Poster);
-      //});
+
 
       });
 
