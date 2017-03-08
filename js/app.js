@@ -86,7 +86,8 @@ $(document).ready(function(){
           // do your action on your 'li' or whatever it is you're listening for
           // alert("Hello World!");
           console.log("inside click handler2");
-          document.getElementById("overlay").style.display = "block";
+          var popup = document.getElementById("overlay");
+          popup.classList.toggle("show");
 
 
         }
