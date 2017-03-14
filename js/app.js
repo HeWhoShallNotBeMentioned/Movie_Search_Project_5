@@ -44,6 +44,7 @@ $(document).ready(function(){
 
          if (movie.Poster === "N/A")
          {
+         statusHTML += '<li>';
           statusHTML += '<div class="poster-wrap">';
           statusHTML += '<i class="material-icons poster-placeholder">crop_original</i>';
           statusHTML += '</div>';
@@ -74,29 +75,29 @@ $(document).ready(function(){
       //   console.log("inside click handler");
       //   alert("Hello World!"); });
 
-      document.addEventListener('click', function(event) {
-        console.log(event);
-        if (event.target.tagName === 'SPAN' || event.target.tagName === 'IMG') {
-          //need to put in || for non-poster sites
-          event.preventDefault();
-          // var targetLI = $('this.li');
-          // console.log("targetLI   ", targetLI);
-          // targetLI.attr('id', movie.imdbID);
-          // console.log("imdbID   ",movie.imdbID);
-          // do your action on your 'li' or whatever it is you're listening for
-          // alert("Hello World!");
-          console.log("inside click handler2");
-          var popup = document.getElementById("overlay");
-          popup.classList.toggle("show");
-
-
-        }
-
-          $.getJSON(apiURL, {i:  movie.imdbID}, function(response2){
-            console.log("response2", response2);
-            console.log(response2.Poster);
-          });
-        });
+      // document.addEventListener('click', function(event) {
+      //   console.log(event);
+      //   if (event.target.tagName === 'SPAN' || event.target.tagName === 'IMG') {
+      //     //need to put in || for non-poster sites
+      //     event.preventDefault();
+      //     // var targetLI = $('this.li');
+      //     // console.log("targetLI   ", targetLI);
+      //     // targetLI.attr('id', movie.imdbID);
+      //     // console.log("imdbID   ",movie.imdbID);
+      //     // do your action on your 'li' or whatever it is you're listening for
+      //     // alert("Hello World!");
+      //     console.log("inside click handler2");
+      //     var popup = document.getElementById("overlay");
+      //     popup.classList.toggle("show");
+      //
+      //
+      //   }
+      //
+      //     $.getJSON(apiURL, {i:  movie.imdbID}, function(response2){
+      //       console.log("response2", response2);
+      //       console.log(response2.Poster);
+      //     });
+      //   });
 
 
       //var eachObject = {};

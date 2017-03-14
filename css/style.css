@@ -238,10 +238,6 @@ button {
 
 }
 
-#overlay {
-  width: 100%;
-}
-
 @media (min-width: 769px) {
   body {
     padding-top: 115px;
